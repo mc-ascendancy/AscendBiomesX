@@ -4,6 +4,7 @@ import com.ascendancyproject.ascendbiomes.AscendBiomes;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockGrowEvent;
 
 public class CropGrowthEvents implements Listener {
@@ -22,5 +23,12 @@ public class CropGrowthEvents implements Listener {
             new CropGrow(event);
         else
             new CropSpecialGrow(event);
+    }
+
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent event) {
+        // Remove crop metadata on blocks that have it when they are broken.
+        if (event.getBlock().hasMetadata(CropAgeMetadata.key))
+            event.getBlock().removeMetadata(CropAgeMetadata.key, AscendBiomes.getInstance());
     }
 }

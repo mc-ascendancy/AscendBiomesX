@@ -1,1 +1,14 @@
-[]
+{
+	"PLAINS": {
+		"cropGrowthRates": {
+			"WHEAT": 50,
+			"CARROTS": 400
+		}
+	},
+	"BEACH": {
+		"cropGrowthRates": {
+			"WHEAT": 200,
+			"CARROTS": 100
+		}
+	}
+}
