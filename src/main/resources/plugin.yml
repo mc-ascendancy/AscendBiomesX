@@ -1,0 +1,8 @@
+name: AscendBiomes
+version: ${project.version}
+main: com.ascendancyproject.ascendbiomes.AscendBiomes
+api-version: 1.16
+prefix: Ascend Biomes
+authors: [ Froogo ]
+description: Custom biomes for Ascendancy Project.
+website: ascendancyproject.com
