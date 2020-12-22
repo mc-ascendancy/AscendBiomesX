@@ -26,7 +26,6 @@ public class CropGrow {
         int age = metadata.getAndIncrement();
         event.getBlock().setMetadata(CropAgeMetadata.key, metadata);
 
-        // TODO: calculate age based on current biome's CustomBiome.
         float ticksPerAge = calculateTicksPerAge(event.getBlock());
         ageable.setAge((int)((float)age / ticksPerAge));
 
@@ -42,8 +41,7 @@ public class CropGrow {
             return;
         }
 
-        // TODO: guess age from current biome's CustomBiome.
-        int age = ageable.getAge() / 64;
+        int age = (int)((float)ageable.getAge() * calculateTicksPerAge(event.getBlock()));
 
         event.getBlock().setMetadata(CropAgeMetadata.key, new CropAgeMetadata(age));
     }
