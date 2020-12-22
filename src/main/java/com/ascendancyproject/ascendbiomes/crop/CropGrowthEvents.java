@@ -1,0 +1,26 @@
+package com.ascendancyproject.ascendbiomes.crop;
+
+import com.ascendancyproject.ascendbiomes.AscendBiomes;
+import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockGrowEvent;
+
+public class CropGrowthEvents implements Listener {
+    AscendBiomes plugin;
+
+    public CropGrowthEvents(AscendBiomes plugin) {
+        this.plugin = plugin;
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+    }
+
+    @EventHandler
+    public void onBlockGrow(BlockGrowEvent event) {
+        // If the block is a normally growing plant, such as wheat, do the normal checks.
+        // If this is not the case, it is a special growth event, such as sugar cane, or melons.
+        if (event.getBlock().getType() != Material.AIR)
+            new CropGrow(event);
+        else
+            new CropSpecialGrow(event);
+    }
+}

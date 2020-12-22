@@ -13,13 +13,13 @@ public class Config {
 
     private static HashMap<String, CustomBiome> customBiomes;
 
-    public static void init(File config) {
+    public static void init(File config, AscendBiomes plugin) {
         // Write the default config, if none exists.
         if (config.exists()) {
-            AscendBiomes.getInstance().getLogger().info("Loaded " + location);
+            plugin.getLogger().info("Loaded " + location);
         } else {
-            AscendBiomes.getInstance().getLogger().warning("Could not find " + location + "; writing the default config");
-            AscendBiomes.getInstance().saveResource("biomes.json", false);
+            plugin.getLogger().warning("Could not find " + location + "; writing the default config");
+            plugin.saveResource("biomes.json", false);
         }
 
         // Instantiate a default GSON instance, this could be configured here for custom types if necessary.

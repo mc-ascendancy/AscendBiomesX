@@ -1,5 +1,6 @@
 package com.ascendancyproject.ascendbiomes;
 
+import com.ascendancyproject.ascendbiomes.crop.CropGrowthEvents;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -13,10 +14,11 @@ public final class AscendBiomes extends JavaPlugin {
 
         // Load JSON config file.
         File configFile = new File(getDataFolder(), Config.location);
-        Config.init(configFile);
+        Config.init(configFile, this);
 
         // Register events.
-        // TODO: register events.
+        new CropGrowthEvents(this);
+        getLogger().info("Registered events");
 
         getLogger().info("Enabled");
     }
