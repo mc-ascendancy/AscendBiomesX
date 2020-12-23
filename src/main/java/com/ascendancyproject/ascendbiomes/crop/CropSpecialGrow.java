@@ -43,25 +43,34 @@ public class CropSpecialGrow {
                     if (direction != directional.getFacing().getOppositeFace())
                         continue;
 
-                    int tpa = (int)CropGrow.calculateTicksPerAge(block);
-
-                    if (!block.hasMetadata(CropAgeMetadata.productionAttemptKey))
-                        block.setMetadata(CropAgeMetadata.productionAttemptKey, new CropAgeMetadata());
-
-                    CropAgeMetadata cropAgeMetadata = (CropAgeMetadata) block.getMetadata(CropAgeMetadata.productionAttemptKey).get(0);
-                    int age = cropAgeMetadata.getAndIncrement();
-                    block.setMetadata(CropAgeMetadata.productionAttemptKey, cropAgeMetadata);
-
-                    if (age < tpa)
-                        event.getBlock().setType(Material.AIR);
-                    else
+                    if (shouldProduce(block))
                         block.removeMetadata(CropAgeMetadata.productionAttemptKey, AscendBiomes.getInstance());
+                    else
+                        event.getBlock().setType(Material.AIR);
                 }
             }
         }.runTaskLater(AscendBiomes.getInstance(), 1);
     }
 
     private void growVertical(BlockGrowEvent event) {
+        Block block = event.getBlock().getRelative(BlockFace.DOWN);
 
+        if (shouldProduce(block))
+            block.removeMetadata(CropAgeMetadata.productionAttemptKey, AscendBiomes.getInstance());
+        else
+            event.setCancelled(true);
+    }
+
+    private boolean shouldProduce(Block block) {
+        int tpa = (int)CropGrow.calculateTicksPerAge(block);
+
+        if (!block.hasMetadata(CropAgeMetadata.productionAttemptKey))
+            block.setMetadata(CropAgeMetadata.productionAttemptKey, new CropAgeMetadata());
+
+        CropAgeMetadata cropAgeMetadata = (CropAgeMetadata) block.getMetadata(CropAgeMetadata.productionAttemptKey).get(0);
+        int age = cropAgeMetadata.getAndIncrement();
+        block.setMetadata(CropAgeMetadata.productionAttemptKey, cropAgeMetadata);
+
+        return age >= tpa;
     }
 }

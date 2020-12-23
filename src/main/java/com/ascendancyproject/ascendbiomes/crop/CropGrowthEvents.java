@@ -36,5 +36,8 @@ public class CropGrowthEvents implements Listener {
         // Remove crop metadata on blocks that have it when they are broken.
         if (event.getBlock().hasMetadata(CropAgeMetadata.key))
             event.getBlock().removeMetadata(CropAgeMetadata.key, AscendBiomes.getInstance());
+
+        if (event.getBlock().hasMetadata(CropAgeMetadata.productionAttemptKey))
+            event.getBlock().removeMetadata(CropAgeMetadata.productionAttemptKey, AscendBiomes.getInstance());
     }
 }
