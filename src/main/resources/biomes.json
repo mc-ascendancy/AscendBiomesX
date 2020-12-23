@@ -22,7 +22,16 @@
 			},
 			"mobGrowthRates": {
 				"COW": 250
-			}
+			},
+			"statusEffects": [
+				{
+					"effect": "REGENERATION"
+				},
+				{
+					"effect": "JUMP",
+					"amplifier": 1
+				}
+			]
 		}
 	}
 }

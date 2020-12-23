@@ -1,6 +1,7 @@
 package com.ascendancyproject.ascendbiomes;
 
 import com.ascendancyproject.ascendbiomes.crop.CropGrowthEvents;
+import com.ascendancyproject.ascendbiomes.effect.EffectEvents;
 import com.ascendancyproject.ascendbiomes.mob.MobGrowthEvents;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,6 +21,7 @@ public final class AscendBiomes extends JavaPlugin {
         // Register events.
         new CropGrowthEvents(this);
         new MobGrowthEvents(this);
+        new EffectEvents(this);
         getLogger().info("Registered events");
 
         getLogger().info("Enabled");
