@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockGrowEvent;
+import org.bukkit.event.block.BlockSpreadEvent;
 
 public class CropGrowthEvents implements Listener {
     AscendBiomes plugin;
@@ -23,6 +24,11 @@ public class CropGrowthEvents implements Listener {
             new CropGrow(event);
         else
             new CropSpecialGrow(event);
+    }
+
+    @EventHandler
+    public void onBlockSpread(BlockSpreadEvent event) {
+        // TODO: deal with bamboo and chorus plant.
     }
 
     @EventHandler

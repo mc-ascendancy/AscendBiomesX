@@ -5,8 +5,9 @@ import org.bukkit.metadata.MetadataValueAdapter;
 
 public class CropAgeMetadata extends MetadataValueAdapter {
     public static final String key = "ascendbiomes-age";
+    public static final String productionAttemptKey = "ascendbiomes-production-attempts";
 
-    int age;
+    private int age;
 
     public CropAgeMetadata() {
         super(AscendBiomes.getInstance());

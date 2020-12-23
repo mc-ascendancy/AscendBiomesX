@@ -26,8 +26,8 @@ public class CropGrow {
         int age = metadata.getAndIncrement();
         event.getBlock().setMetadata(CropAgeMetadata.key, metadata);
 
-        float ticksPerAge = calculateTicksPerAge(event.getBlock());
-        ageable.setAge((int)((float)age / ticksPerAge));
+        float tpa = calculateTicksPerAge(event.getBlock());
+        ageable.setAge((int)((float)age / tpa));
 
         if (ageable.getAge() == ageable.getMaximumAge())
             event.getBlock().removeMetadata(CropAgeMetadata.key, AscendBiomes.getInstance());
@@ -46,7 +46,7 @@ public class CropGrow {
         event.getBlock().setMetadata(CropAgeMetadata.key, new CropAgeMetadata(age));
     }
 
-    private float calculateTicksPerAge(Block block) {
+    public static float calculateTicksPerAge(Block block) {
         CustomBiome customBiome = Config.getCustomBiomes().get(block.getBiome().name());
         if (customBiome == null)
             return ticksFromGrowthRate(defaultGrowthRate);
@@ -58,7 +58,7 @@ public class CropGrow {
         return ticksFromGrowthRate(growthRate);
     }
 
-    private float ticksFromGrowthRate(float growthRate) {
+    private static float ticksFromGrowthRate(float growthRate) {
         return 1 / (growthRate / 100) * spigotGrowthModifier;
     }
 }
