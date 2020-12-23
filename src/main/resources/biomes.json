@@ -2,16 +2,26 @@
 	"defaultCropGrowthRate": {
 		"WHEAT": 50
 	},
+	"mobGrowthTickRate": 100,
+	"defaultMobGrowthRate": {
+		"COW": 100
+	},
 	"customBiomes": {
 		"PLAINS": {
 			"cropGrowthRates": {
 				"CARROTS": 400
+			},
+			"mobGrowthRates": {
+				"PIG": 0
 			}
 		},
 		"BEACH": {
 			"cropGrowthRates": {
 				"WHEAT": 200,
 				"CARROTS": 100
+			},
+			"mobGrowthRates": {
+				"COW": 250
 			}
 		}
 	}

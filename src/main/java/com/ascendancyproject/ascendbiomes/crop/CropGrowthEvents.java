@@ -10,7 +10,7 @@ import org.bukkit.event.block.BlockSpreadEvent;
 import org.bukkit.event.world.StructureGrowEvent;
 
 public class CropGrowthEvents implements Listener {
-    AscendBiomes plugin;
+    private final AscendBiomes plugin;
 
     public CropGrowthEvents(AscendBiomes plugin) {
         this.plugin = plugin;

@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Config {
     public static final String location = "biomes.json";
@@ -15,6 +16,8 @@ public class Config {
 
     private HashMap<String, CustomBiome> customBiomes;
     private HashMap<String, Float> defaultCropGrowthRate;
+    private int mobGrowthTickRate;
+    private HashMap<String, Float> defaultMobGrowthRate;
 
     public static void init(File config, AscendBiomes plugin) {
         // Write the default config, if none exists.
@@ -34,6 +37,9 @@ public class Config {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        for (Map.Entry<String, CustomBiome> cursor : instance.getCustomBiomes().entrySet())
+            cursor.getValue().inherit();
     }
 
     public static Config getInstance() {
@@ -46,5 +52,13 @@ public class Config {
 
     public HashMap<String, Float> getDefaultCropGrowthRate() {
         return defaultCropGrowthRate;
+    }
+
+    public int getMobGrowthTickRate() {
+        return mobGrowthTickRate;
+    }
+
+    public HashMap<String, Float> getDefaultMobGrowthRate() {
+        return defaultMobGrowthRate;
     }
 }
