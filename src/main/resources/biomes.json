@@ -1,14 +1,18 @@
 {
-	"PLAINS": {
-		"cropGrowthRates": {
-			"WHEAT": 50,
-			"CARROTS": 400
-		}
+	"defaultCropGrowthRate": {
+		"WHEAT": 50
 	},
-	"BEACH": {
-		"cropGrowthRates": {
-			"WHEAT": 200,
-			"CARROTS": 100
+	"customBiomes": {
+		"PLAINS": {
+			"cropGrowthRates": {
+				"CARROTS": 400
+			}
+		},
+		"BEACH": {
+			"cropGrowthRates": {
+				"WHEAT": 200,
+				"CARROTS": 100
+			}
 		}
 	}
 }

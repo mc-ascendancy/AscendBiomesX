@@ -11,7 +11,10 @@ import java.util.HashMap;
 public class Config {
     public static final String location = "biomes.json";
 
-    private static HashMap<String, CustomBiome> customBiomes;
+    private static Config instance;
+
+    private HashMap<String, CustomBiome> customBiomes;
+    private HashMap<String, Float> defaultCropGrowthRate;
 
     public static void init(File config, AscendBiomes plugin) {
         // Write the default config, if none exists.
@@ -27,13 +30,21 @@ public class Config {
 
         try {
             // Parse the config file using the new GSON instance.
-            customBiomes = gson.fromJson(new FileReader(config), new TypeToken<HashMap<String, CustomBiome>>(){}.getType());
+            instance = gson.fromJson(new FileReader(config), new TypeToken<Config>(){}.getType());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public static HashMap<String, CustomBiome> getCustomBiomes() {
+    public static Config getInstance() {
+        return instance;
+    }
+
+    public HashMap<String, CustomBiome> getCustomBiomes() {
         return customBiomes;
+    }
+
+    public HashMap<String, Float> getDefaultCropGrowthRate() {
+        return defaultCropGrowthRate;
     }
 }

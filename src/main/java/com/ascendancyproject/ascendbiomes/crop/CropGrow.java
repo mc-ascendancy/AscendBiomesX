@@ -47,15 +47,20 @@ public class CropGrow {
     }
 
     public static float calculateTicksPerAge(Block block) {
-        CustomBiome customBiome = Config.getCustomBiomes().get(block.getBiome().name());
+        CustomBiome customBiome = Config.getInstance().getCustomBiomes().get(block.getBiome().name());
         if (customBiome == null)
-            return ticksFromGrowthRate(defaultGrowthRate);
+            return ticksFromGrowthRate(getDefaultGrowthRate(block));
 
         Float growthRate = customBiome.getCropGrowthRates().get(block.getType().name());
         if (growthRate == null)
-            return ticksFromGrowthRate(defaultGrowthRate);
+            return ticksFromGrowthRate(getDefaultGrowthRate(block));
 
         return ticksFromGrowthRate(growthRate);
+    }
+
+    private static float getDefaultGrowthRate(Block block) {
+        Float growthRate = Config.getInstance().getDefaultCropGrowthRate().get(block.getType().name());
+        return growthRate == null ? defaultGrowthRate : growthRate;
     }
 
     private static float ticksFromGrowthRate(float growthRate) {
