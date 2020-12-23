@@ -6,6 +6,8 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Directional;
 import org.bukkit.event.block.BlockGrowEvent;
+import org.bukkit.event.block.BlockSpreadEvent;
+import org.bukkit.event.world.StructureGrowEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class CropSpecialGrow {
@@ -28,6 +30,36 @@ public class CropSpecialGrow {
                 growVertical(event);
                 break;
         }
+    }
+
+    public CropSpecialGrow(BlockSpreadEvent event) {
+        switch (event.getNewState().getType()) {
+            case KELP:
+            case BAMBOO:
+            case VINE:
+            case TWISTING_VINES:
+            case WEEPING_VINES:
+                break;
+
+            default:
+                return;
+        }
+
+        Block block = event.getSource();
+
+        if (shouldProduce(block))
+            block.removeMetadata(CropAgeMetadata.productionAttemptKey, AscendBiomes.getInstance());
+        else
+            event.setCancelled(true);
+    }
+
+    public CropSpecialGrow(StructureGrowEvent event) {
+        Block block = event.getLocation().getBlock();
+
+        if (shouldProduce(block))
+            block.removeMetadata(CropAgeMetadata.productionAttemptKey, AscendBiomes.getInstance());
+        else
+            event.setCancelled(true);
     }
 
     private void growStem(BlockGrowEvent event) {
