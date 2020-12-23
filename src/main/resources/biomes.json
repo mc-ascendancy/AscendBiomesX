@@ -32,6 +32,9 @@
 					"amplifier": 1
 				}
 			]
+		},
+		"FOREST": {
+			"inherit": "BEACH"
 		}
 	}
 }
