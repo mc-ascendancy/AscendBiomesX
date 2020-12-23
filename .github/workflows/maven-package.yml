@@ -28,5 +28,5 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: target/ascendbiomes.jar
-          asset_name: ascendbiomes
+          asset_name: ascendbiomes-${{ github.event.release.tag_name }}.jar
           tag: ${{ github.ref }}
