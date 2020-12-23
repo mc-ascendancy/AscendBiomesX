@@ -3,6 +3,7 @@ package com.ascendancyproject.ascendbiomes.effect;
 import com.ascendancyproject.ascendbiomes.AscendBiomes;
 import com.ascendancyproject.ascendbiomes.Config;
 import com.ascendancyproject.ascendbiomes.CustomBiome;
+import org.bukkit.Location;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,6 +11,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -24,18 +26,27 @@ public class EffectEvents implements Listener {
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
-        Biome biomeFrom = event.getFrom().getBlock().getBiome();
-        Biome biomeTo = event.getTo().getBlock().getBiome();
+        updateEffects(event.getPlayer(), event.getFrom(), event.getTo());
+    }
+
+    @EventHandler
+    public void onPlayerTeleport(PlayerTeleportEvent event) {
+        updateEffects(event.getPlayer(), event.getFrom(), event.getTo());
+    }
+
+    private void updateEffects(Player player, Location from, Location to) {
+        Biome biomeFrom = from.getBlock().getBiome();
+        Biome biomeTo = to.getBlock().getBiome();
 
         // If we haven't moved biomes, return.
         if (biomeFrom == biomeTo)
             return;
 
         // Remove effects from the previous biome.
-        removeEffects(event.getPlayer(), biomeFrom);
+        removeEffects(player, biomeFrom);
 
         // Add the new biome's effects.
-        addEffects(event.getPlayer(), biomeTo);
+        addEffects(player, biomeTo);
     }
 
     private void removeEffects(Player player, Biome biome) {
