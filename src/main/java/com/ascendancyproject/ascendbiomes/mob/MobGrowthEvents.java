@@ -31,11 +31,6 @@ public class MobGrowthEvents {
 
             int ageDiff = (int)((getMobGrowthRate(entity) / 100 - 1) * mobGrowthTickRate);
             ageable.setAge(ageable.getAge() + ageDiff);
-
-            if (entity.getCustomName() != null && entity.getCustomName().equals("TEST"))
-                System.out.printf("Mob pos: %d %d %d grew %d and is now %d%n",
-                        entity.getLocation().getBlockX(), entity.getLocation().getBlockY(), entity.getLocation().getBlockZ(),
-                        ageDiff, ageable.getAge());
         });
     }
 
