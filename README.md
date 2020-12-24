@@ -10,6 +10,7 @@ Ascend Biomes - a plugin allowing custom configuration of biomes developed by [F
     - [Regionalized crop growth](#regionalized-crop-growth)
     - [Regionalized mob growth](#regionalized-mob-growth)
     - [Regionalized status effects](#regionalized-status-effects)
+- [Setup](#setup)
 - [Configuration file](#configuration-file)
     - [Default crop/mob growth](#default-cropmob-growth)
     - [Mob growth tickrate](#mob-growth-tickrate)
@@ -86,6 +87,34 @@ On every [EntityPotionEffectEvent](https://hub.spigotmc.org/javadocs/spigot/org/
 (which is called for every individual effect in the case of a mass removal via milk),
 all events removing a persistent biome effect will be cancelled.
 This means that a player drinking milk will have all effects except persistent biome effects removed.
+
+## Setup
+
+To set up this plugin, download the plugin from [the latest release](../../releases/latest) and move it to your plugins folder.
+You can then configure the automatically generating `biomes.json` file with assistance from the [configuration file](#configuration-file) help.
+
+You must also up the growth rate modifiers to 800% for everything available in the server's `spigot.yml` file.
+
+For example, the `spigot.yml` should now contain this:
+```yaml
+    growth:
+      cactus-modifier: 800
+      cane-modifier: 800
+      melon-modifier: 800
+      mushroom-modifier: 800
+      pumpkin-modifier: 800
+      sapling-modifier: 800
+      beetroot-modifier: 800
+      carrot-modifier: 800
+      potato-modifier: 800
+      wheat-modifier: 800
+      netherwart-modifier: 800
+      vine-modifier: 800
+      cocoa-modifier: 800
+      bamboo-modifier: 800
+      sweetberry-modifier: 800
+      kelp-modifier: 800
+```
 
 ## Configuration file
 If you are ever confused about how to format the configuration file,
