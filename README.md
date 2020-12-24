@@ -62,7 +62,11 @@ The same metadata trick is used, however, it instead stores the amount of times 
 only allowing it to spread after the amount of times specified in the config (e.g. 8 for 100%, 4 for 200%, or 16 for 50%).
 This, like with standard crops, introduces no randomness on the plugin's end, keeping timings similar to vanilla.
 
-TODO: explain chorus plants solution after [issue #8](../../issues/8) is resolved.
+Chorus plants... Oh, chorus plants...
+For whatever reason, they are not able to have their growth rates modified in `spigot.yml` like **every** other spreading block.
+This means their growth rate can only be decreased, not only that, but only to rates of `1/x {0 < x} where x is an integer`.
+So for example, it could be slowed to: `50%, 33%, 25%, 20%, etc.`.
+Although, according to Connor, this should be fine for this specific use case, as they will only ever need to be slowed.
 
 ### Regionalized mob growth
 As there is no event triggered on an entity's growth, a scheduled ticker has been used.
