@@ -39,6 +39,8 @@ public class CropSpecialGrow {
             case VINE:
             case TWISTING_VINES:
             case WEEPING_VINES:
+            case BROWN_MUSHROOM:
+            case RED_MUSHROOM:
                 break;
 
             default:
