@@ -3,9 +3,9 @@ Ascend Biomes - a plugin allowing custom configuration of biomes developed by [F
 
 ### Index
 - [Specification](#specification)
-    - [Regionalized crop growth](#regionalized-crop-growth-issue-3issues3)
-    - [Regionalized mob growth](#regionalized-mob-growth-issue-4issues4)
-    - [Regionalized status effects](#regionalized-status-effects-issue-5issues5)
+    - [Regionalized crop growth](#regionalized-crop-growth-issue-3)
+    - [Regionalized mob growth](#regionalized-mob-growth-issue-4)
+    - [Regionalized status effects](#regionalized-status-effects-issue-5)
 - [Implementation](#implementation)
     - [Regionalized crop growth](#regionalized-crop-growth)
     - [Regionalized mob growth](#regionalized-mob-growth)
