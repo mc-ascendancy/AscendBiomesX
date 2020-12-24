@@ -14,6 +14,9 @@ Ascend Biomes - a plugin allowing custom configuration of biomes developed by [F
     - [Default crop/mob growth](#default-cropmob-growth)
     - [Mob growth tickrate](#mob-growth-tickrate)
     - [Custom biomes](#custom-biomes)
+      - [Crop/mob growth rate](#cropmob-growth-rate)
+      - [Status effects](#status-effects)
+      - [Inheritance](#inheritance)
 - [Help](#help)
     - [Contact](#contact)
 
@@ -85,14 +88,136 @@ all events removing a persistent biome effect will be cancelled.
 This means that a player drinking milk will have all effects except persistent biome effects removed.
 
 ## Configuration file
-### Default crop/mob growth
+If you are ever confused about how to format the configuration file,
+you can check out the [sample configuration file](src/main/resources/biomes.json).
 
+### Default crop/mob growth
+The `defaultMobGrowthRate` and `defaultCropGrowthRate` fields define growth rates for mobs/crops which do not
+have a [custom biome](#custom-biomes) or are not described by their custom biome.
+These fields are both JSON maps with the key being a string, and the value being a float (allowing for decimal point values).
+
+For example, if we wanted cows in every biome which doesn't have a custom growth rate,
+to grow at 200%, we would do this:
+```json
+{
+  "defaultMobGrowthRate": {
+    "COW": 200
+  }
+}
+```
+
+Or if we wanted all wheat to grow at one third of its regular rate, we could do this:
+```json
+{
+  "defaultCropGrowthRate": {
+    "WHEAT": 33.333
+  }
+}
+```
 
 ### Mob growth tickrate
+This is how many ticks the mob growth updater will wait before doing its check [as described in regionalized mob growth](#regionalized-mob-growth).
+This generally should not be lowered below 100 ticks (every 5 seconds), which is the default.
+If you are noticing a significant performance impact due to this check, you could increase the wait.
+However, I would strongly advise **NOT** going above 600 ticks (every 30 seconds),
+as this may make it noticeably inaccurate.
 
+Example:
+```json
+{
+  "mobGrowthTickRate": 100
+}
+```
 
 ### Custom biomes
+The `customBiomes` is a map with the key being the name of the biome, and the value being custom traits of that biome.
 
+#### Crop/mob growth rate
+To affect the growth rate of crops/mobs in a specific biome, specify the `cropGrowthRates` or `mobGrowthRates` respectively.
+These fields are both maps with the key being the name of the crop/mob, and the value being the growth rate as a percentage.
+
+For example, if I wanted wheat to grow twice as fast in a plains biome, I would do this:
+```json
+{
+  "customBiomes": {
+    "PLAINS": {
+      "cropGrowthRates": {
+        "WHEAT": 200
+      }
+    }
+  }
+}
+```
+
+Notice that you can also leave values blank.
+
+#### Status effects
+The `statusEffects` field allows you to apply status effects to players while they are inside a specific biome.
+This field is an array of status effect, where status effect **MUST** contain the `effect` value,
+and **CAN** optionally contain the amplifier value.
+If the amplifier value is not specified, it is assumed to be zero (e.g. level one).
+
+For example, if I wanted forests to give me jump boost two, and speed one, I would do this:
+```json
+{
+  "customBiomes": {
+    "FOREST": {
+      "statusEffects": [
+        {
+          "effect": "JUMP",
+          "amplifier": 1
+        },
+        {
+          "effect": "SPEED"
+        }
+      ]
+    }
+  }
+}
+```
+
+#### Inheritance
+As [issue #2](../../issues/2) described, you may inherit values from another custom biome using the `inherit` field.
+This can be useful if you utilise DESERT and DESERT_HILLS biomes, but want them to be identical, or similar.
+
+Values from the `cropGrowthRates` or `mobGrowthRates` maps will be merged, with the child getting the final say.
+The `statusEffects` array will just be the child's value if it exists, otherwise, the parent's value.
+
+For example, if I wanted DESERT_HILLS to be the same as DESERT,
+except DESERT_HILLS has none of the status effects,
+and DESERT_HILLS had a slightly faster cactus growth rate, I'd do this:
+
+```json
+{
+  "customBiomes": {
+    "DESERT": {
+      "mobGrowthRate": {
+        "LLAMA": 200
+      },
+      "cropGrowthRates": {
+        "CACTUS": 150
+      },
+      "statusEffects": [
+        {
+          "effect": "REGENERATION"
+        }
+      ]
+    },
+    "DESERT_HILLS": {
+      "cropGrowthRates": {
+        "CACTUS": 175
+      },
+      "statusEffects": [],
+      "inherit": "DESERT"
+    }
+  }
+}
+```
 
 ## Help
+The simplest way to receive help is to open an issue on this repository, as I should receive an email.
+However, if it is urgent, use the contact information below.
+
 ### Contact
+Discord: Froogo#5239  
+Email: harry@froogo.co.uk
