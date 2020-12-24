@@ -41,6 +41,7 @@ public class CropSpecialGrow {
             case WEEPING_VINES:
             case BROWN_MUSHROOM:
             case RED_MUSHROOM:
+            case CHORUS_FLOWER:
                 break;
 
             default:
@@ -96,7 +97,9 @@ public class CropSpecialGrow {
     }
 
     private boolean shouldProduce(Block block) {
-        int tpa = (int)CropGrow.calculateTicksPerAge(block);
+        // Chorus flowers are an exception, and should consequently be treated differently (see issue #8).
+        int tpa = block.getType() == Material.CHORUS_FLOWER ? (int)(CropGrow.calculateTicksPerAge(block) / CropGrow.spigotGrowthModifier)
+                : (int)CropGrow.calculateTicksPerAge(block);
 
         if (!block.hasMetadata(CropAgeMetadata.productionAttemptKey))
             block.setMetadata(CropAgeMetadata.productionAttemptKey, new CropAgeMetadata());

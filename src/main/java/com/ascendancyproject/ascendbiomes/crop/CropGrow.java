@@ -9,7 +9,7 @@ import org.bukkit.event.block.BlockGrowEvent;
 
 public class CropGrow {
     private static final float defaultGrowthRate = 100.f;
-    private static final float spigotGrowthModifier = 8.f;
+    public static final float spigotGrowthModifier = 8.f;
 
     public CropGrow(BlockGrowEvent event) {
         if (!(event.getBlock().getBlockData() instanceof Ageable))

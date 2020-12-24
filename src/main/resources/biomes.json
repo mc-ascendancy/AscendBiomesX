@@ -1,6 +1,7 @@
 {
 	"defaultCropGrowthRate": {
-		"WHEAT": 50
+		"WHEAT": 50,
+		"CHORUS_FLOWER": 25
 	},
 	"mobGrowthTickRate": 100,
 	"defaultMobGrowthRate": {
