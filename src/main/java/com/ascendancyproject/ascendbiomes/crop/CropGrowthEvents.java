@@ -33,7 +33,7 @@ public class CropGrowthEvents implements Listener {
     }
 
     @EventHandler
-    public void onBlockSpread(StructureGrowEvent event) {
+    public void onStructureGrow(StructureGrowEvent event) {
         new CropSpecialGrow(event);
     }
 
