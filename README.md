@@ -1,5 +1,5 @@
 # AscendBiomes
-AscendBiomes - a plugin allowing custom configuration of biomes developed by [Froogo](https://froogo.co.uk) for [the Ascendancy Project](https://ascendancyproject.com).
+AscendBiomes - a plugin allowing custom configuration of biomes developed by [Froogo](https://froogo.co.uk) for [The Ascendancy Project](https://ascendancyproject.com).
 
 ### Index
 - [Specification](#specification)
