@@ -11,9 +11,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPotionEffectEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class EffectEvents implements Listener {
     private final AscendBiomes plugin;
@@ -34,6 +36,17 @@ public class EffectEvents implements Listener {
         updateEffects(event.getPlayer(), event.getFrom(), event.getTo());
     }
 
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent event) {
+        // Apply effects one tick later, after the player has fully spawned in.
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                addEffects(event.getPlayer(), event.getRespawnLocation().getBlock().getBiome());
+            }
+        }.runTaskLater(plugin, 1L);
+    }
+
     private void updateEffects(Player player, Location from, Location to) {
         Biome biomeFrom = from.getBlock().getBiome();
         Biome biomeTo = to.getBlock().getBiome();
@@ -43,21 +56,16 @@ public class EffectEvents implements Listener {
             return;
 
         // Remove effects from the previous biome.
-        removeEffects(player, biomeFrom);
+        removeEffects(player);
 
         // Add the new biome's effects.
         addEffects(player, biomeTo);
     }
 
-    private void removeEffects(Player player, Biome biome) {
-        CustomBiome customBiome = Config.getInstance().getCustomBiomes().get(biome.name());
-        if (customBiome == null)
-            return;
-
-        for (CustomEffect effect : customBiome.getStatusEffects()) {
-            if (player.hasPotionEffect(effect.get().getType()))
-                player.removePotionEffect(effect.get().getType());
-        }
+    private void removeEffects(Player player) {
+        for (PotionEffect effect : player.getActivePotionEffects())
+            if (effect.getType() != PotionEffectType.BAD_OMEN && effect.getDuration() > 1000000)
+                player.removePotionEffect(effect.getType());
     }
 
     private void addEffects(Player player, Biome biome) {
@@ -89,9 +97,7 @@ public class EffectEvents implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         // Prevent exploit where players disconnect on the edge of a biome to keep status effects.
-        for (PotionEffect effect : event.getPlayer().getActivePotionEffects())
-            if (effect.getType() != PotionEffectType.BAD_OMEN && effect.getDuration() > 1000000)
-                event.getPlayer().removePotionEffect(effect.getType());
+        removeEffects(event.getPlayer());
 
         addEffects(event.getPlayer(), event.getPlayer().getLocation().getBlock().getBiome());
     }
