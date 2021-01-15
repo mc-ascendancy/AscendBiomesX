@@ -305,12 +305,7 @@
 			"mobGrowthRates": {
 				"FOX": 75,
 				"WOLF": 75
-			},
-			"statusEffects": [
-				{
-					"effect": "ABSORPTION"
-				}
-			]
+			}
 		},
 		"ICE_SPIKES": {
 			"cropGrowthRates": {
