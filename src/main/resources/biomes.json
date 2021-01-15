@@ -85,7 +85,12 @@
 			"mobGrowthRates": {
 				"CHICKEN": 75,
 				"OCELOT": 75
-			}
+			},
+			"statusEffects": [
+				{
+					"effect": "HEALTH_BOOST"
+				}
+			]
 		},
 		"DARK_FOREST": {
 			"cropGrowthRates": {
@@ -109,7 +114,12 @@
 			"mobGrowthRates": {
 				"RABBIT": 75,
 				"CHICKEN": 75
-			}
+			},
+			"statusEffects": [
+				{
+					"effect": "LUCK"
+				}
+			]
 		},
 		"DESERT": {
 			"inherit": "DESERT_HILLS"
@@ -170,7 +180,12 @@
 			"mobGrowthRates": {
 				"SHEEP": 50,
 				"COW": 25
-			}
+			},
+			"statusEffects": [
+				{
+					"effect": "JUMP_BOOST"
+				}
+			]
 		},
 		"MOUNTAIN_EDGE": {
 			"cropGrowthRates": {
@@ -183,7 +198,12 @@
 				"WOLF": 50,
 				"SHEEP": 50,
 				"COW": 25
-			}
+			},
+			"statusEffects": [
+				{
+					"effect": "JUMP_BOOST"
+				}
+			]
 		},
 		"SNOWY_MOUNTAINS": {
 			"inherit": "MOUNTAIN_EDGE",
@@ -202,7 +222,12 @@
 				"WOLF": 50,
 				"SHEEP": 50,
 				"COW": 25
-			}
+			},
+			"statusEffects": [
+				{
+					"effect": "SATURATION"
+				}
+			]
 		},
 		"FOREST": {
 			"cropGrowthRates": {
@@ -280,7 +305,12 @@
 			"mobGrowthRates": {
 				"FOX": 75,
 				"WOLF": 75
-			}
+			},
+			"statusEffects": [
+				{
+					"effect": "ABSORPTION"
+				}
+			]
 		},
 		"ICE_SPIKES": {
 			"cropGrowthRates": {
@@ -290,6 +320,16 @@
 				"POLAR_BEAR": 150,
 				"SHEEP": 175
 			}
+		},
+		"THE_END": {
+			"statusEffects": [
+				{
+					"effect": "WITHER"
+				},
+				{
+					"effect": "WEAKNESS"
+				}
+			]
 		}
 	}
 }
