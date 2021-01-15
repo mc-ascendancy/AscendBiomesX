@@ -1,41 +1,295 @@
 {
 	"defaultCropGrowthRate": {
-		"WHEAT": 50,
-		"CHORUS_FLOWER": 25
+		"KELP": 33.333,
+		"CHORUS_PLANT": 33.333
 	},
 	"mobGrowthTickRate": 100,
 	"defaultMobGrowthRate": {
 		"COW": 100
 	},
 	"customBiomes": {
-		"PLAINS": {
+		"CRIMSON_FOREST": {
 			"cropGrowthRates": {
-				"CARROTS": 400
-			},
-			"mobGrowthRates": {
-				"PIG": 0
+				"NETHER_WART": 150
 			}
 		},
-		"BEACH": {
+		"WARPED_FOREST": {
+			"inherit": "CRIMSON_FOREST"
+		},
+		"MODIFIED_JUNGLE": {
 			"cropGrowthRates": {
-				"WHEAT": 200,
-				"CARROTS": 100
+				"WHEAT": 50,
+				"RED_MUSHROOM": 50,
+				"BROWN_MUSHROOM": 50,
+				"CARROTS": 50,
+				"PUMPKIN_STEM": 75,
+				"COCOA": 125
 			},
 			"mobGrowthRates": {
-				"COW": 250
+				"CHICKEN": 125,
+				"PARROT": 75,
+				"PIG": 125
+			}
+		},
+		"PLAINS": {
+			"cropGrowthRates": {
+				"SUGAR_CANE": 50,
+				"CARROTS": 50
 			},
-			"statusEffects": [
-				{
-					"effect": "REGENERATION"
-				},
-				{
-					"effect": "JUMP",
-					"amplifier": 1
-				}
-			]
+			"mobGrowthRates": {
+				"SHEEP": 75
+			}
+		},
+		"STONE_SHORE": {
+			"cropGrowthRates": {
+				"WHEAT": 50,
+				"BEETROOTS": 75,
+				"POTATOES": 75,
+				"SWEET_BERRY_BUSH": 50
+			},
+			"mobGrowthRates": {
+				"SHEEP": 75,
+				"MULE": 75
+			}
+		},
+		"TAIGA_HILLS": {
+			"cropGrowthRates": {
+				"WHEAT": 50,
+				"BEETROOTS": 75,
+				"POTATOES": 50,
+				"SWEET_BERRY_BUSH": 50
+			},
+			"mobGrowthRates": {
+				"COW": 75,
+				"PARROT": 75
+			}
+		},
+		"BIRCH_FOREST": {
+			"cropGrowthRates": {
+				"WHEAT": 50,
+				"SUGAR_CANE": 50,
+				"CARROTS": 50
+			},
+			"mobGrowthRates": {
+				"PIG": 75,
+				"RABBIT": 75
+			}
+		},
+		"SUNFLOWER_PLAINS": {
+			"cropGrowthRates": {
+				"WHEAT": 75,
+				"SUGAR_CANE": 75,
+				"BAMBOO": 75,
+				"BAMBOO_SAPLING": 75
+			},
+			"mobGrowthRates": {
+				"CHICKEN": 75,
+				"OCELOT": 75
+			}
+		},
+		"DARK_FOREST": {
+			"cropGrowthRates": {
+				"WHEAT": 50,
+				"SUGAR_CANE": 50,
+				"CARROTS": 75,
+				"POTATOES": 50
+			},
+			"mobGrowthRates": {
+				"PIG": 75,
+				"DONKEY": 75
+			}
+		},
+		"DESERT_HILLS": {
+			"cropGrowthRates": {
+				"WHEAT": 25,
+				"SUGAR_CANE": 20,
+				"CACTUS": 150,
+				"NETHER_WART": 50
+			},
+			"mobGrowthRates": {
+				"RABBIT": 75,
+				"CHICKEN": 75
+			}
+		},
+		"DESERT": {
+			"inherit": "DESERT_HILLS"
+		},
+		"SOUL_SAND_VALLEY": {
+			"cropGrowthRates": {
+				"WHEAT": 75,
+				"SUGAR_CANE": 50
+			}
+		},
+		"BASALT_DELTAS": {
+			"inherit": "SOUL_SAND_VALLEY"
+		},
+		"JUNGLE": {
+			"cropGrowthRates": {
+				"MELON_STEM": 125,
+				"RED_MUSHROOM": 75,
+				"BROWN_MUSHROOM": 75,
+				"COCOA": 125
+			},
+			"mobGrowthRates": {
+				"CHICKEN": 125,
+				"COW": 125
+			}
+		},
+		"BAMBOO_JUNGLE": {
+			"cropGrowthRates": {
+				"MELON_STEM": 125,
+				"RED_MUSHROOM": 75,
+				"BROWN_MUSHROOM": 75,
+				"COCOA": 125
+			},
+			"mobGrowthRates": {
+				"PANDA": 125,
+				"CHICKEN": 125
+			}
+		},
+		"MESA": {
+			"cropGrowthRates": {
+				"WHEAT": 25,
+				"SUGAR_CANE": 50,
+				"CACTUS": 125,
+				"NETHER_WART": 80
+			},
+			"mobGrowthRates": {
+				"CHICKEN": 75,
+				"RABBIT": 75
+			}
+		},
+		"MOUNTAINS": {
+			"cropGrowthRates": {
+				"WHEAT": 40,
+				"SUGAR_CANE": 25,
+				"PUMPKIN_STEM": 50,
+				"NETHER_WART": 80,
+				"SWEET_BERRY_BUSH": 50
+			},
+			"mobGrowthRates": {
+				"SHEEP": 50,
+				"COW": 25
+			}
+		},
+		"MOUNTAIN_EDGE": {
+			"cropGrowthRates": {
+				"WHEAT": 40,
+				"SUGAR_CANE": 25,
+				"PUMPKIN_STEM": 50,
+				"SWEET_BERRY_BUSH": 50
+			},
+			"mobGrowthRates": {
+				"WOLF": 50,
+				"SHEEP": 50,
+				"COW": 25
+			}
+		},
+		"SNOWY_MOUNTAINS": {
+			"inherit": "MOUNTAIN_EDGE",
+			"mobGrowthRates": {
+				"FOX": 50
+			}
+		},
+		"MUSHROOM_FIELDS": {
+			"cropGrowthRates": {
+				"WHEAT": 150,
+				"SUGAR_CANE": 150,
+				"RED_MUSHROOM": 200,
+				"BROWN_MUSHROOM": 200
+			},
+			"mobGrowthRates": {
+				"WOLF": 50,
+				"SHEEP": 50,
+				"COW": 25
+			}
 		},
 		"FOREST": {
-			"inherit": "BEACH"
+			"cropGrowthRates": {
+				"WHEAT": 50,
+				"SUGAR_CANE": 75,
+				"CARROTS": 50
+			},
+			"mobGrowthRates": {
+				"PIG": 75,
+				"RABBIT": 75
+			}
+		},
+		"GIANT_SPRUCE_TAIGA": {
+			"cropGrowthRates": {
+				"WHEAT": 40,
+				"SUGAR_CANE": 40,
+				"PUMPKIN_STEM": 60,
+				"POTATOES": 75
+			},
+			"mobGrowthRates": {
+				"FOX": 50,
+				"WOLF": 75,
+				"SHEEP": 75
+			}
+		},
+		"SAVANNA": {
+			"cropGrowthRates": {
+				"WHEAT": 30,
+				"SUGAR_CANE": 50,
+				"NETHER_WART": 80
+			},
+			"mobGrowthRates": {
+				"RABBIT": 75
+			}
+		},
+		"TAIGA": {
+			"cropGrowthRates": {
+				"WHEAT": 50,
+				"SUGAR_CANE": 50,
+				"PUMPKIN_STEM": 60,
+				"BEETROOTS": 50,
+				"POTATOES": 60,
+				"SWEET_BERRY_BUSH": 50
+			},
+			"mobGrowthRates": {
+				"PIG": 75
+			}
+		},
+		"SWAMP": {
+			"cropGrowthRates": {
+				"WHEAT": 50,
+				"SUGAR_CANE": 125,
+				"RED_MUSHROOM": 150,
+				"BROWN_MUSHROOM": 150
+			},
+			"mobGrowthRates": {
+				"COW": 75
+			}
+		},
+		"SWAMP_HILLS": {
+			"inherit": "SWAMP",
+			"cropGrowthRates": {
+				"WHEAT": 100
+			}
+		},
+		"SNOWY_TUNDRA": {
+			"cropGrowthRates": {
+				"WHEAT": 25,
+				"SUGAR_CANE": 25,
+				"PUMPKIN_STEM": 40,
+				"BEETROOTS": 40,
+				"POTATOES": 45,
+				"SWEET_BERRY_BUSH": 75
+			},
+			"mobGrowthRates": {
+				"FOX": 75,
+				"WOLF": 75
+			}
+		},
+		"ICE_SPIKES": {
+			"cropGrowthRates": {
+				"SWEET_BERRY_BUSH": 110
+			},
+			"mobGrowthRates": {
+				"POLAR_BEAR": 150,
+				"SHEEP": 175
+			}
 		}
 	}
 }
