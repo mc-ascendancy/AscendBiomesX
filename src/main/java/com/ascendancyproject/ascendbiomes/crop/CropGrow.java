@@ -27,7 +27,7 @@ public class CropGrow {
         event.getBlock().setMetadata(CropAgeMetadata.key, metadata);
 
         float tpa = calculateTicksPerAge(event.getBlock());
-        ageable.setAge((int)((float)age / tpa));
+        ageable.setAge(Math.min((int)((float)age / tpa), ageable.getMaximumAge()));
 
         if (ageable.getAge() == ageable.getMaximumAge())
             event.getBlock().removeMetadata(CropAgeMetadata.key, AscendBiomes.getInstance());
