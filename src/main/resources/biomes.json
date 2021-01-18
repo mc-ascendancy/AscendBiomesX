@@ -183,7 +183,7 @@
 			},
 			"statusEffects": [
 				{
-					"effect": "JUMP_BOOST"
+					"effect": "JUMP"
 				}
 			]
 		},
@@ -201,7 +201,7 @@
 			},
 			"statusEffects": [
 				{
-					"effect": "JUMP_BOOST"
+					"effect": "JUMP"
 				}
 			]
 		},
