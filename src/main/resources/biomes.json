@@ -319,7 +319,8 @@
 		"THE_END": {
 			"statusEffects": [
 				{
-					"effect": "WITHER"
+					"effect": "WITHER",
+					"amplifier": 1
 				},
 				{
 					"effect": "WEAKNESS"
