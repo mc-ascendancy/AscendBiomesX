@@ -39,7 +39,7 @@ public class MobGrowthEvents {
         if (customBiome == null)
             return getDefaultGrowthRate(entity);
 
-        Float growthRate = customBiome.getMobGrowthRates().get(entity.getType().name());
+        Float growthRate = customBiome.getMobGrowthRatesType().get(entity.getType());
         if (growthRate == null)
             return getDefaultGrowthRate(entity);
 
@@ -47,7 +47,7 @@ public class MobGrowthEvents {
     }
 
     private float getDefaultGrowthRate(Entity entity) {
-        Float growthRate = Config.getInstance().getDefaultMobGrowthRate().get(entity.getType().name());
+        Float growthRate = Config.getInstance().getDefaultMobGrowthRateType().get(entity.getType());
         return growthRate == null ? defaultGrowthRate : growthRate;
     }
 }

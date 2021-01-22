@@ -2,6 +2,8 @@ package com.ascendancyproject.ascendbiomes;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,8 +18,10 @@ public class Config {
 
     private HashMap<String, CustomBiome> customBiomes;
     private HashMap<String, Float> defaultCropGrowthRate;
+    private HashMap<Material, Float> defaultCropGrowthRateType;
     private int mobGrowthTickRate;
     private HashMap<String, Float> defaultMobGrowthRate;
+    private HashMap<EntityType, Float> defaultMobGrowthRateType;
 
     public static void init(File config, AscendBiomes plugin) {
         // Write the default config, if none exists.
@@ -38,6 +42,12 @@ public class Config {
             e.printStackTrace();
         }
 
+        instance.defaultCropGrowthRateType = new HashMap<>();
+        instance.defaultMobGrowthRateType = new HashMap<>();
+
+        instance.defaultCropGrowthRate.forEach((k, v) -> instance.defaultCropGrowthRateType.put(Material.getMaterial(k), v));
+        instance.defaultMobGrowthRate.forEach((k, v) -> instance.defaultMobGrowthRateType.put(EntityType.valueOf(k), v));
+
         for (Map.Entry<String, CustomBiome> cursor : instance.getCustomBiomes().entrySet())
             cursor.getValue().inherit();
     }
@@ -50,15 +60,15 @@ public class Config {
         return customBiomes;
     }
 
-    public HashMap<String, Float> getDefaultCropGrowthRate() {
-        return defaultCropGrowthRate;
+    public HashMap<Material, Float> getDefaultCropGrowthRateType() {
+        return defaultCropGrowthRateType;
     }
 
     public int getMobGrowthTickRate() {
         return mobGrowthTickRate;
     }
 
-    public HashMap<String, Float> getDefaultMobGrowthRate() {
-        return defaultMobGrowthRate;
+    public HashMap<EntityType, Float> getDefaultMobGrowthRateType() {
+        return defaultMobGrowthRateType;
     }
 }

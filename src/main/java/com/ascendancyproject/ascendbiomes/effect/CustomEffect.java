@@ -10,13 +10,10 @@ public class CustomEffect {
     private PotionEffect potionEffect;
 
     public PotionEffect get() {
-        if (potionEffect == null)
-            generate();
-
         return potionEffect;
     }
 
-    private void generate() {
+    public void generate() {
         potionEffect = new PotionEffect(PotionEffectType.getByName(effect), Integer.MAX_VALUE, amplifier);
     }
 }

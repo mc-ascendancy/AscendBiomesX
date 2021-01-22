@@ -51,7 +51,7 @@ public class CropGrow {
         if (customBiome == null)
             return ticksFromGrowthRate(getDefaultGrowthRate(block));
 
-        Float growthRate = customBiome.getCropGrowthRates().get(block.getType().name());
+        Float growthRate = customBiome.getCropGrowthRatesType().get(block.getType());
         if (growthRate == null)
             return ticksFromGrowthRate(getDefaultGrowthRate(block));
 
@@ -59,7 +59,7 @@ public class CropGrow {
     }
 
     private static float getDefaultGrowthRate(Block block) {
-        Float growthRate = Config.getInstance().getDefaultCropGrowthRate().get(block.getType().name());
+        Float growthRate = Config.getInstance().getDefaultCropGrowthRateType().get(block.getType());
         return growthRate == null ? defaultGrowthRate : growthRate;
     }
 
