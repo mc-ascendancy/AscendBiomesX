@@ -27,10 +27,24 @@ public class CustomBiome {
         cropGrowthRatesType = new HashMap<>();
 
         if (cropGrowthRates != null)
-            cropGrowthRates.forEach((k, v) -> cropGrowthRatesType.put(Material.getMaterial(k), v));
+            cropGrowthRates.forEach((k, v) -> {
+                Material material = Material.getMaterial(k);
+                if (material == null) {
+                    AscendBiomes.getInstance().getLogger().severe("Error loading configuration file; unknown crop material: " + k);
+                    return;
+                }
+
+                cropGrowthRatesType.put(material, v);
+            });
 
         if (mobGrowthRates != null)
-            mobGrowthRates.forEach((k, v) -> mobGrowthRatesType.put(EntityType.valueOf(k), v));
+            mobGrowthRates.forEach((k, v) ->  {
+                try {
+                    mobGrowthRatesType.put(EntityType.valueOf(k), v);
+                } catch (IllegalArgumentException e) {
+                    AscendBiomes.getInstance().getLogger().severe("Error loading configuration file; unknown entity type: " + k);
+                }
+            });
 
         if (inherit != null) {
             CustomBiome parent = Config.getInstance().getCustomBiomes().get(inherit);

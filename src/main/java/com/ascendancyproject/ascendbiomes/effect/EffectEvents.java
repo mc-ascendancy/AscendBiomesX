@@ -74,7 +74,8 @@ public class EffectEvents implements Listener {
             return;
 
         for (CustomEffect effect : customBiome.getStatusEffects())
-            player.addPotionEffect(effect.get());
+            if (effect.isValid())
+                player.addPotionEffect(effect.get());
     }
 
     @EventHandler
@@ -87,7 +88,7 @@ public class EffectEvents implements Listener {
             return;
 
         for (CustomEffect effect : customBiome.getStatusEffects()) {
-            if (effect.get().getType() == event.getOldEffect().getType() && effect.get().getAmplifier() == event.getOldEffect().getAmplifier()) {
+            if (effect.isValid() && effect.get().getType() == event.getOldEffect().getType() && effect.get().getAmplifier() == event.getOldEffect().getAmplifier()) {
                 event.setCancelled(true);
                 break;
             }
