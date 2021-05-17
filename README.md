@@ -1,6 +1,25 @@
 # AscendBiomes
 AscendBiomes - a plugin allowing custom configuration of biomes developed by [Froogo](https://froogo.co.uk) for [The Ascendancy Project](https://ascendancyproject.com).
 
+### Brief description
+This plugin was originally developed and funded by
+[The Ascendancy Project, LLC.](https://ascendancyproject.com/) in late 2020 through early 2021.
+The goal of this plugin was to give each biome unique modifiers fitting in a Civilization-style server,
+including regionalized crop growth, mob growth, and status effects. The exact specification can be read [here](#specification).
+
+This plugin was originally a closed-source internal plugin for Ascendancy, however, due to the closure of Ascendancy,
+the plugin is now deprecated and open-source.
+
+### License
+*This is not legal advice from a lawyer, but a developer's understanding of the license.*
+This plugin is under [the GNU AGPLv3](LICENSE.md), which allows
+commercial use, modification, distribution, patent use, and private use.
+This, however, is under the clause that when the plugin is provided on a server,
+the source code must be afforded to all players, including all modifications to the original works made by the server.
+
+The plugin may be used in commercial servers with no additional requirements.
+
+
 ### Index
 - [Specification](#specification)
     - [Regionalized crop growth](#regionalized-crop-growth-issue-3)
